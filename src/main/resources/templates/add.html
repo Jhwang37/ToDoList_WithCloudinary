@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{../stylesheet.css}">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="form-class">
+<form action="#" th:action="@{/process}" th:object="${todo}" method="post"
+      enctype="multipart/form-data">
+    Name: <input type ="text" th:field ="*{taskName}" />
+    Description: <input type ="text" th:field="*{taskDescription}" />
+    Due Date: <input type ="text" th:field="*{dueDate}"/>
+    <input class="choose-btn" type="file" name="file">
+    <button type="submit" class="btn" onclick="location"  >Submit</button>
+
+</form>
+</div>
+</div>
+<script>
+    var myWindow;
+
+    function openWin() {
+        myWindow = window.open("/add", "", "width=100, height=200");
+    }
+
+    function closeSelf(){
+        window.close();
+    }
+
+    function closePopupWindow(){
+        window.opener.location.reload();
+        window.close();
+    }
+    function CloseAndRefresh()
+    {
+        opener.location.reload(true);
+        self.close();
+    }
+    function RefreshParent() {
+
+        if (window.opener != null && !window.opener.closed) {
+
+            window.opener.location.href = "/index";
+
+            self.close();
+        }
+    }
+
+    </script>
+
+
+
+
+
+</body>
+</html>

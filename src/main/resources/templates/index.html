@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{../stylesheet.css}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+    <header>
+        <h1>To Do List</h1>
+    </header>
+    <button onclick="openWin()">Add new Task</button>
+        <div th:each="todo : ${todos}">
+            <h2 th:inline="text">TaskName: [[${todo.taskName}]]</h2>
+            <h2 th:inline="text"> [[${todo.taskDescription}]]></h2>
+            <h2 th:inline="text"> [[${todo.dueDate}]]></h2>
+            <img th:src="${todo.image}" /><hr />
+            </p>
+        </div>
+</div>
+    <script>
+        var myWindow;
+
+        function openWin() {
+            myWindow = window.open("/add", "", "width=160, height=250");
+        }
+    </script>
+</body>
+</html>
